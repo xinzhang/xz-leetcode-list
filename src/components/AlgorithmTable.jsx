@@ -269,7 +269,14 @@ const AlgorithmTable = () => {
                   {item.number}
                 </td>
                 <td className='border border-gray-300 px-4 py-2'>
-                  {item.title}
+                  <a
+                    href={`https://leetcode.com/problems/${item.link}`}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-600 hover:text-blue-800 hover:underline'
+                  >
+                    {item.title}
+                  </a>
                 </td>
                 <td className='border border-gray-300 px-4 py-2'>
                   {item.subcategory
