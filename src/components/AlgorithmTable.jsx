@@ -54,6 +54,13 @@ const AlgorithmTable = () => {
     setCompletedProblems({});
   };
 
+  // Reset all filters
+  const resetAllFilters = () => {
+    setFilter("");
+    setDifficultyFilter("all");
+    setTopicFilter("all");
+  };
+
   // Handle sorting
   const handleSort = (column) => {
     if (sortColumn === column) {
@@ -187,8 +194,26 @@ const AlgorithmTable = () => {
           </select>
         </div>
 
+        <button
+              onClick={resetAllFilters}
+              className='bg-gray-200 hover:bg-gray-300 text-gray-700 p-2 rounded flex items-center justify-center self-start mt-6'
+              title='Reset all filters'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                fill='currentColor'
+                viewBox='0 0 16 16'
+              >
+                <path d='M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z' />
+                <path d='M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z' />
+              </svg>
+            </button>
+
         {exportReady && (
-          <div className='w-full md:w-auto flex items-end gap-2'>
+          <div className='w-full md:w-auto flex items-end gap-2 ml-auto'>
+            
             <button
               onClick={resetAllCompleted}
               className='bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded'
@@ -288,7 +313,8 @@ const AlgorithmTable = () => {
                     {item.topics.map((topic, i) => (
                       <span
                         key={i}
-                        className='inline-block px-2 py-1 text-xs rounded bg-blue-100 text-blue-800'
+                        className='inline-block px-2 py-1 text-xs rounded bg-blue-100 text-blue-800 hover:bg-blue-200 cursor-pointer'
+                        onClick={() => setTopicFilter(topic)}
                       >
                         {topic}
                       </span>
